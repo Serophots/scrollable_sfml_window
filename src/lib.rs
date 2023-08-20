@@ -5,7 +5,7 @@ use sfml::system::{Clock, Vector2f, Vector2u};
 use sfml::window::{ContextSettings, Event, Style};
 use sfml::window::mouse::Button;
 
-pub struct WhiteboardWindow<'a> {
+pub struct ScrollableWindow<'a> {
     pub window: RenderWindow,
 
     pub view: SfBox<View>,
@@ -21,7 +21,7 @@ pub struct WhiteboardWindow<'a> {
     pub delta_time: f32,
 }
 
-impl<'a> WhiteboardWindow<'a> {
+impl<'a> ScrollableWindow<'a> {
     pub fn new(size: Vector2u, title: &str) -> Self {
 
         //Anti aliasing (cli args)
