@@ -11,6 +11,8 @@ pub struct ScrollableWindow<'a> {
     pub view: SfBox<View>,
     view_rectangle: RectangleShape<'a>,
 
+    do_scrollable: bool,
+
     right_down: bool,
     right_down_last_pos: Vector2f,
     zoom: f32,
@@ -66,6 +68,8 @@ impl<'a> ScrollableWindow<'a> {
             previous_frame_time: 0.,
             framerate: 0,
             delta_time: 0.,
+
+            do_scrollable: true,
         }
     }
 
@@ -118,8 +122,10 @@ impl<'a> ScrollableWindow<'a> {
     }
     pub fn clear(&mut self, color: Color) {
         self.window.clear(color);
-        self.set_fixed(false);
-        self.window.draw(&self.view_rectangle);
+        if self.do_scrollable {
+            self.set_fixed(false);
+            self.window.draw(&self.view_rectangle);
+        }
     }
     pub fn display(&mut self) {
         self.window.display();
