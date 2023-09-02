@@ -81,6 +81,9 @@ impl<'a> ScrollableWindow<'a> {
             self.window.set_view(&*self.view);
         }
     }
+    pub fn set_scrollable_functionality_enabled(&mut self, scrollable: bool) {
+        self.do_scrollable = scrollable;
+    }
 
     pub fn poll_event(&mut self) -> Option<Event> {
         let option_event = self.window.poll_event();
